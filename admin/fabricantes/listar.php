@@ -1,9 +1,12 @@
 <?php
-// Importando a classe Fabricante
-require "../../src/Fabricante.php";
-require_once "../../src/Acesso.php";
+//Verifica acesso antes de acessar recursos
+require_once "../src/Acesso.php";
 $sessão = new Acesso;
 $sessão->verificaAcesso();
+//Acessa as classe semente apos verificar usuario
+
+// Importando a classe Fabricante
+require "../../src/Fabricante.php";
 
 // Criando um objeto para fabricante
 $fabricante = new Fabricante;
