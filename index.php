@@ -17,6 +17,19 @@
         <hr class="my-4">
         
         
+        <form action="" class="w-50 mx-auto" method="post">
+            <p class="form-group text-left">
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" name="email" id="email" class="form-control">
+
+            </p>
+            <p class="formgroup">
+                <label for="senha" class="form-label">Senha:</label>
+                <input type="password" name="senha" id="senha" class="form-control">
+
+            </p>
+            <button type="submit" class="btn btn-primary" name="entrar">Entrar</button>
+        </form>
     </div> 
     
     
