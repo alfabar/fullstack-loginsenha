@@ -7,6 +7,27 @@ if(isset($_POST['entrar']))
 {
     $usuario = new Usuario;
     $usuario->setEmail($_POST['email']);
+    $dados = $usuario->buscaUsuario();
+    
+    //var_dump($dados);
+    //se foi localizado um usuario pelo email
+
+    if( $dados != null){
+        //então verificamos a senha digitada com o banco
+        if(password_verify($_POST['senha'], $dados['senha'])){
+            $sessao = new Acesso;
+            $sessao->login($dados['id'], $dados['nome'], $dados['tipo']);
+        }
+        else
+        {
+            //se a senha for diferente não loga
+            echo "senha incorreta";
+        }
+
+    }else{
+        echo " Usuario não encontrado";
+
+    }
     
 }
 ?>
