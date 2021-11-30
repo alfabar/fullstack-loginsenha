@@ -1,3 +1,16 @@
+<?php 
+require_once "src/Acesso.php";
+require_once "src/Usuario.php";
+
+
+if(isset($_POST['entrar']))
+{
+    $usuario = new Usuario;
+    $usuario->setEmail($_POST['email']);
+    
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
