@@ -1,6 +1,9 @@
 <?php
 
 require_once "../../src/Fabricante.php";
+require_once "../../src/Acesso.php";
+$sessão = new Acesso;
+$sessão->verificaAcesso();
 
 if (isset($_POST['inserir']) ) {
     $fabricante = new Fabricante;

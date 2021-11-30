@@ -6,19 +6,26 @@ class Acesso {
 
         //inicializando uma sessão no php
         session_start();
-
     }
-
     public function login(string $id, string $nome, string $tipo){
         //Capturar os dados de id nome e tipo e armazena-los na sessão
         $_SESSION['id'] = $id;
         $_SESSION['nome'] = $nome;
         $_SESSION['tipo'] = $tipo;
         header("location:admin/index.php");
+    } 
+    
+    public function verificaAcesso(){
+    
+        if(!isset($_SESSION['id'])){
+            // então detrua quarquer resquicio da sessão
+            session_destroy();
+    
+            //e force o usuario a continuar na pagina
+            header("location:../index.php");
+        }else{
+            return true;
+    
+        }
     }
-
-
-    
-        
-    
 }

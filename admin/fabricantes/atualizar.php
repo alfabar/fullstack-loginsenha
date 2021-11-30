@@ -1,6 +1,9 @@
 <?php
 // Importamos a classe Fabricante
 require_once "../../src/Fabricante.php";
+require_once "../../src/Acesso.php";
+$sessão = new Acesso;
+$sessão->verificaAcesso();
 
 // Para poder usar recursos da classe, instanciamos um objeto
 $fabricante = new Fabricante;

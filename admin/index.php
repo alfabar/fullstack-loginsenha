@@ -1,3 +1,9 @@
+<?php
+require_once "../src/Acesso.php";
+$sessão = new Acesso;
+$sessão->verificaAcesso();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

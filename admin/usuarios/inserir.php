@@ -1,5 +1,9 @@
 <?php
 require "../../src/Usuario.php";
+require_once "../../src/Acesso.php";
+$sessão = new Acesso;
+$sessão->verificaAcesso();
+
 $usuario = new Usuario;
 if(isset($_POST['inserir']))
 {  
