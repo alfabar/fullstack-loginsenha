@@ -15,17 +15,12 @@ if( empty($_POST['senha']))
   ///entãomantenha a senha exixtente
   $usuario->setSenha($dados['senha']);
 }
-else
-{
-  $usuario->setSenha();
+else{
+  //sendo iguais sera mantida a mesma senha ja existente no banco
+  $usuario->setSenha(
+  $usuario->verificaSenha($_POST['senha'], $dados['senha'])
+);
 }
-
-
-
-
-
-
-
   $usuario->atualizarUsuario();
   header("location:listar.php");
 }
