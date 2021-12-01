@@ -3,6 +3,16 @@ require_once "src/Acesso.php";
 require_once "src/Usuario.php";
 
 
+//detectar os parametros de url
+if(isset($_GET['senha_incorreta'])){
+    $mensagem = "Senha incorreta, verifique e digite novamente";
+
+}elseif(isset($_GET['nao_encontrado'])){
+    $mensagem = "Usuario nao encontrado no sistema";
+}
+
+
+
 if(isset($_POST['entrar']))
 {
     $usuario = new Usuario;
@@ -21,14 +31,11 @@ if(isset($_POST['entrar']))
         else
         {
             //se a senha for diferente não loga
-            echo "senha incorreta";
+            header("location:index.php?senha_incorreta");
         }
-
     }else{
-        echo " Usuario não encontrado";
-
-    }
-    
+        header("location:index.php?nao_encontrado");
+    }    
 }
 ?>
 

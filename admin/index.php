@@ -22,8 +22,8 @@ $sessão->logout();
 <div class="container">
     
     <article class="jumbotron my-4 shadow text-center">
-        <h1 class="display-4">Olá!</h1>
-        <p class="lead">Você está na área administrativa.</p>
+        <h1 class="display-4">Olá! <?=$_SESSION['nome']?></h1>
+        <p class="lead">Você está na área administrativa. <span class="badge badge-info"> <?=$_SESSION['tipo']?></span></p>
         <p class="lead">Operações de <b>inserção</b>, <b>leitura</b>, <b>atualização</b> e <b>exclusão</b> de dados.</p>
         <hr>
         
