@@ -35,6 +35,13 @@ class Acesso {
         exit;// // or die();
     }
 
+    public function verificaPermissao(){
+        if($_SESSION['tipo'] != "administrador"){
+            header("location:../index.php");
+            exit;
+        }
+    }
+
 
 
 }

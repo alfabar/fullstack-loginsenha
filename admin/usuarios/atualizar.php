@@ -3,6 +3,7 @@
 require_once "../../src/Acesso.php";
 $sessão = new Acesso;
 $sessão->verificaAcesso();
+$sessao->verificaPermissao();
 //Acessa as classe semente apos verificar usuario
 require "../../src/Usuario.php";
 require_once "../../src/Acesso.php";

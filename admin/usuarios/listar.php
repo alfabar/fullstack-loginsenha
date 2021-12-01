@@ -3,9 +3,10 @@
 require_once "../../src/Usuario.php";
 require_once "../../src/Acesso.php";
 $sessão = new Acesso;
-$sessão->verificaAcesso();
-
 $usuario = new Usuario;
+$sessão->verificaAcesso();
+$sessão->verificaPermissao();
+
 $listarUsuarios = $usuario->lerUsuarios();
 ?>
 

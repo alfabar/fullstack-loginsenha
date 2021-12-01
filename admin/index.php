@@ -29,8 +29,9 @@ $sessão->logout();
         
         <a class="btn btn-primary btn-lg" href="fabricantes/listar.php">Fabricantes</a> 
         <a class="btn btn-primary btn-lg" href="produtos/listar.php">Produtos</a>
+        <?php if($_SESSION['tipo'] == "administrador"){?>
         <a class="btn btn-primary btn-lg" href="usuarios/listar.php">Usuários</a>
-
+        <?php }?>
         <p class="my-2">
             <a class="btn btn-danger" href="?sair">&times; Sair</a>
         </p>
