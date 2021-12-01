@@ -1,6 +1,6 @@
 <?php
 //Verifica acesso antes de acessar recursos
-require_once "../src/Acesso.php";
+require_once "../../src/Acesso.php";
 $sessão = new Acesso;
 $sessão->verificaAcesso();
 //Acessa as classe semente apos verificar usuario
