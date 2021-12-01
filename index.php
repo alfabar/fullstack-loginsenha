@@ -9,9 +9,12 @@ if(isset($_GET['senha_incorreta'])){
 
 }elseif(isset($_GET['nao_encontrado'])){
     $mensagem = "Usuario nao encontrado no sistema";
+}elseif(isset($_GET['acesso_negado'])){    
+    $mensagem = "Voce deve Logar Primeiro";
+}elseif(isset($_GET['logout'])){    
+    $mensagem = "Voce saiu do sistema";
+
 }
-
-
 
 if(isset($_POST['entrar']))
 {
@@ -59,6 +62,12 @@ if(isset($_POST['entrar']))
         
         
         <form action="" class="w-50 mx-auto" method="post">
+            <?php if(isset($mensagem)){ ?>
+                
+            <p class="alert alert-warning">
+                <?=$mensagem?>
+            </p>
+        <?php } ?>
             <p class="form-group text-left">
                 <label for="email" class="form-label">Email:</label>
                 <input type="email" name="email" id="email" class="form-control">
@@ -71,11 +80,7 @@ if(isset($_POST['entrar']))
             </p>
             <button type="submit" class="btn btn-primary" name="entrar">Entrar</button>
         </form>
-    </div> 
-    
-    
+    </div>     
 </div>
-
-
 </body>
 </html>

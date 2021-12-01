@@ -22,7 +22,7 @@ class Acesso {
             session_destroy();
     
             //e force o usuario a continuar na pagina
-            header("location:../index.php");
+            header("location:../index.php?acesso_negado");
         }else{
             return true;
     

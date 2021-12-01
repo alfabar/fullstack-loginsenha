@@ -2,12 +2,13 @@
 require_once "../src/Acesso.php";
 $sessão = new Acesso;
 $sessão->verificaAcesso();
+///
+
+
 
 if(isset($_GET['sair']))
-
 $sessão->logout();
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -19,8 +20,7 @@ $sessão->logout();
 
 </head>
 <body>
-<div class="container">
-    
+<div class="container">    
     <article class="jumbotron my-4 shadow text-center">
         <h1 class="display-4">Olá! <?=$_SESSION['nome']?></h1>
         <p class="lead">Você está na área administrativa. <span class="badge badge-info"> <?=$_SESSION['tipo']?></span></p>
@@ -35,10 +35,7 @@ $sessão->logout();
         <p class="my-2">
             <a class="btn btn-danger" href="?sair">&times; Sair</a>
         </p>
-
-    </article>
-    
+    </article>    
 </div>
-
 </body>
 </html>
