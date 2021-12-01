@@ -2,6 +2,10 @@
 require_once "../src/Acesso.php";
 $sessão = new Acesso;
 $sessão->verificaAcesso();
+
+if(isset($_GET['sair']))
+
+$sessão->logout();
 ?>
 
 <!DOCTYPE html>
@@ -26,6 +30,10 @@ $sessão->verificaAcesso();
         <a class="btn btn-primary btn-lg" href="fabricantes/listar.php">Fabricantes</a> 
         <a class="btn btn-primary btn-lg" href="produtos/listar.php">Produtos</a>
         <a class="btn btn-primary btn-lg" href="usuarios/listar.php">Usuários</a>
+
+        <p class="my-2">
+            <a class="btn btn-danger" href="?sair">&times; Sair</a>
+        </p>
 
     </article>
     
