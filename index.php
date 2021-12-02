@@ -57,6 +57,11 @@ if(isset($_POST['entrar']))
     <div class="jumbotron my-4 shadow text-center">
         <h1 class="display-4">CRUD PHP e MySQL com controle de acesso</h1>
         <hr class="my-4">
+        <h2 class="lead">Consultar produtos existentes</h2>
+        <form action="" method="GET" class="form-inline justify-content-center">
+            <input type="search" class="form-control mr-2" name="busca" id="busca">
+            <button type="submit" class="btn btn-primary" >OK</button>
+        </form>
         <h2 class="lead">Deseja realizar tarefas administrativas? Então entre com seu e-mail e senha para acessar o sistema.</h2>
         <hr class="my-4">
         
