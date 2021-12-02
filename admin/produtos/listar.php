@@ -1,11 +1,10 @@
 <?php
 require_once "../../src/Acesso.php";
-$sessão = new Acesso;
-$sessão->verificaAcesso();
-require_once "../../src/Produto.php";
-//Verifica acesso antes de acessar recursos
+$sessao = new Acesso;
+$sessao->verificaAcesso();
 
-//Acessa as classe semente apos verificar usuario
+
+require_once "../../src/Produto.php";
 $produto = new Produto;
 $listaDeProdutos = $produto->lerProdutos();
 ?>

@@ -1,15 +1,14 @@
 <?php
-
-require_once "../../src/Usuario.php";
 require_once "../../src/Acesso.php";
-$sessão = new Acesso;
-$usuario = new Usuario;
-$sessão->verificaAcesso();
-$sessão->verificaPermissao();
+$sessao = new Acesso;
+$sessao->verificaAcesso();
+$sessao->verificaPermissao();
 
+
+require "../../src/Usuario.php";
+$usuario = new Usuario;
 $listarUsuarios = $usuario->lerUsuarios();
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

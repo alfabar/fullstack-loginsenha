@@ -37,7 +37,7 @@ class Acesso {
 
     public function verificaPermissao(){
         if($_SESSION['tipo'] != "administrador"){
-            header("location:../index.php");
+            header("location:../index.php?nao_permitido");
             exit;
         }
     }

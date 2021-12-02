@@ -1,14 +1,11 @@
 <?php
-//Verifica acesso antes de acessar recursos
 require_once "../../src/Acesso.php";
-$sessão = new Acesso;
-$sessão->verificaAcesso();
+$sessao = new Acesso;
+$sessao->verificaAcesso();
 $sessao->verificaPermissao();
-//Acessa as classe semente apos verificar usuario
+
+
 require "../../src/Usuario.php";
-require_once "../../src/Acesso.php";
-$sessão = new Acesso;
-$sessão->verificaAcesso();
 $usuario = new Usuario;
 $usuario->setId($_GET['id']);
 $dados = $usuario->lerUmUsuario();
@@ -18,21 +15,24 @@ if(isset($_POST['atualizar'])){
   $usuario->setEmail($_POST['email']);
   $usuario->setTipo($_POST['tipo']);
 
+  /* Se o campo senha está vazio */
+  if( empty($_POST['senha']) ){   
+    /* então, mantenha a senha já existe no banco */
+    $usuario->setSenha($dados['senha']);
+  } else {
+    /* senão, verifique a senha digitada no form com a senha
+    existente no banco.
+    
+    Sendo iguais, será mantida a mesma senha já existente e codificada no banco. Sendo diferentes, será usada a nova senha com uma nova
+    codificação. */
+    $usuario->setSenha(
+      $usuario->verificaSenha($_POST['senha'], $dados['senha'])
+    );
+  } // fim if/else senhas
 
-if( empty($_POST['senha']))
-{
-  ///entãomantenha a senha exixtente
-  $usuario->setSenha($dados['senha']);
-}
-else{
-  //sendo iguais sera mantida a mesma senha ja existente no banco
-  $usuario->setSenha(
-  $usuario->verificaSenha($_POST['senha'], $dados['senha'])
-);
-}
   $usuario->atualizarUsuario();
   header("location:listar.php");
-}
+} // fim if isset
 
 ?>
 

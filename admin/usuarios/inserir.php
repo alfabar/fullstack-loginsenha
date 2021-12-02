@@ -1,16 +1,13 @@
 <?php
-//Verifica acesso antes de acessar recursos
 require_once "../../src/Acesso.php";
-$sessão = new Acesso;
-$sessão->verificaAcesso();
+$sessao = new Acesso;
+$sessao->verificaAcesso();
 $sessao->verificaPermissao();
 
-//Acessa as classe semente apos verificar usuario
-require "../../src/Usuario.php";
-$sessão = new Acesso;
-$sessão->verificaAcesso();
 
+require "../../src/Usuario.php";
 $usuario = new Usuario;
+
 if(isset($_POST['inserir']))
 {  
   $usuario->setNome($_POST['nome']);
