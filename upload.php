@@ -26,5 +26,4 @@
             echo "<center><h3 class='text-danger'>Only image format can be upload</h3></center>";
         }
     }
-    
 ?>

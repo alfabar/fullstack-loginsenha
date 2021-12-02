@@ -6,6 +6,7 @@ $produto = new Produto;
 $produto->setTermo($_GET['busca']);
 $resultados = $produto->busca();
 
+$quantidade = count($resultados);
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -32,6 +33,7 @@ $resultados = $produto->busca();
             <p>Voçe Buscou Por: <?=$produto->getTermo()?></p>
             <p>Quantidade de resultados: <?=count($resultados)?></p>
             
+            <?php if ($quantidade > 0) {?>
             <?php foreach($resultados as $dados) { ?>
 
             <ul class="list-group">
@@ -43,6 +45,10 @@ $resultados = $produto->busca();
                 </li>
             </ul>
             <?php } ?>
+            <?php }else{ ?>
+
+                <li class="alert alert-warning">nenhum encontrado</li>
+            <?php } ?>      
 
             <p class="my-3">
                 <a href="index.php" class="btn btn-info">Voltar</a>
