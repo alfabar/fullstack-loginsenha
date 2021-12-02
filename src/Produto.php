@@ -8,6 +8,7 @@ class Produto {
     private int $quantidade;
     private string $descricao;
     private int $fabricanteId;
+    private int $termo;
 
     private PDO $conexao;
 
@@ -94,6 +95,15 @@ class Produto {
         }
     } // fim excluirProduto
 
+    public function busca(){
+        $sql = "SELECT nome, preco FROM produtos WHERE nome LIKE :termo OR descricao LIKE :termo";
+    }
+
+
+
+
+
+
 
     /* Utilitários */
     public function formataPreco(float $preco):string {
@@ -110,7 +120,15 @@ class Produto {
     public function getDescricao():string { return $this->descricao; }
     public function getFabricanteId():int { return $this->fabricanteId; }
 
+    /////// sistema de busca de palavra chave
+    public function getTermo():string { return $this->termo;}
+
     /* Setters */
+    public function setTermo(string $termo){
+        $this->termo = filter_var($termo, FILTER_SANITIZE_STRING);
+    }
+
+    //////////
     public function setId(int $id) {
         $this->id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
     }
