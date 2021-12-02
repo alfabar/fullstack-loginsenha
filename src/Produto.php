@@ -8,7 +8,8 @@ class Produto {
     private int $quantidade;
     private string $descricao;
     private int $fabricanteId;
-    private int $termo;
+    
+    private string $termo;
 
     private PDO $conexao;
 
@@ -95,30 +96,27 @@ class Produto {
         }
     } // fim excluirProduto
 
+
     public function busca(){
-        $sql = "SELECT nome, preco FROM produtos WHERE nome LIKE :termo OR descricao LIKE :termo ORDER BY nome";
-
-
-
-
-    try{
-        $consulta = $this->conexao->prepare($sql);
-
-        //juntando o termo com o operador coringa % para like
-        $termoComOperador = "%".$this->termo."%"; 
-
-        $consulta->bindParam(':termo', $termoComOperador, PDO::PARAM_STR);
+        $sql = "SELECT nome, preco, quantidade, descricao, fabricante_id FROM produtos WHERE nome LIKE :termo 
+                OR descricao LIKE :termo ORDER BY nome";
         
-        $consulta->execute();
-        $resultado = $consulta->fetchAll(PDO::FETCH_ASSOC);
-    }catch (Exception $erro) {
-        die( "Erro: " .$erro->getMessage());
+        try {
+            $consulta = $this->conexao->prepare($sql);
+
+            // Juntando o termo com o operador coringa % para o LIKE funcionar
+            $termoComOperador = "%".$this->termo."%";
+
+            $consulta->bindParam(':termo', $termoComOperador, PDO::PARAM_STR);
+
+            $consulta->execute();
+            $resultado = $consulta->fetchAll(PDO::FETCH_ASSOC);
+        } catch(Exception $erro){
+            die( "Erro: " .$erro->getMessage());
+        }
+        
+        return $resultado;
     }
-    }
-
-
-
-
 
 
 
@@ -136,16 +134,13 @@ class Produto {
     public function getQuantidade():int { return $this->quantidade; }
     public function getDescricao():string { return $this->descricao; }
     public function getFabricanteId():int { return $this->fabricanteId; }
-
-    /////// sistema de busca de palavra chave
-    public function getTermo():string { return $this->termo;}
+    public function getTermo():string { return $this->termo; }
 
     /* Setters */
-    public function setTermo(string $termo){
+    public function setTermo(string $termo) {
         $this->termo = filter_var($termo, FILTER_SANITIZE_STRING);
     }
 
-    //////////
     public function setId(int $id) {
         $this->id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
     }
@@ -168,4 +163,4 @@ class Produto {
     }
 
 
-} // fim da classe Produto
+}

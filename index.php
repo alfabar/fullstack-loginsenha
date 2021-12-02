@@ -2,7 +2,6 @@
 require_once "src/Acesso.php";
 require_once "src/Usuario.php";
 
-
 //detectar os parametros de url
 if(isset($_GET['senha_incorreta'])){
     $mensagem = "Senha incorreta, verifique e digite novamente";
@@ -58,7 +57,7 @@ if(isset($_POST['entrar']))
         <h1 class="display-4">CRUD PHP e MySQL com controle de acesso</h1>
         <hr class="my-4">
         <h2 class="lead">Consultar produtos existentes</h2>
-        <form action="" method="GET" class="form-inline justify-content-center">
+        <form action="resultado.php" method="GET" class="form-inline justify-content-center">
             <input type="search" class="form-control mr-2" name="busca" id="busca">
             <button type="submit" class="btn btn-primary" >OK</button>
         </form>

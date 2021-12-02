@@ -1,3 +1,12 @@
+<?php 
+
+require_once "src/Produto.php";
+
+$produto = new Produto;
+$produto->setTermo($_GET['busca']);
+$resultados = $produto->busca();
+
+?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -20,14 +29,24 @@
         <div class="container">
             <h1>Resultado da busca</h1>
             <hr>
-            <p>Voçe Buscou Por: </p>
-            <p>Quantidade de resultados: </p>
+            <p>Voçe Buscou Por: <?=$produto->getTermo()?></p>
+            <p>Quantidade de resultados: <?=count($resultados)?></p>
+            
+            <?php foreach($resultados as $dados) { ?>
 
             <ul class="list-group">
-                <li class="list-group-item">
-                    Nome do Produto - Preço do Produto
+                <li class="list-group-item"><?=$dados['nome']?>
+                </li>
+                <li class="list-group-item"><?=$produto->formataPreco($dados['preco'])?>
+                </li> <li class="list-group-item"><?=$dados['quantidade']?>
+                </li> <li class="list-group-item"><?=$dados['descricao']?>
                 </li>
             </ul>
+            <?php } ?>
+
+            <p class="my-3">
+                <a href="index.php" class="btn btn-info">Voltar</a>
+            </p>
         </div>
         
         <script src="" async defer></script>
