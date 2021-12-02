@@ -96,7 +96,24 @@ class Produto {
     } // fim excluirProduto
 
     public function busca(){
-        $sql = "SELECT nome, preco FROM produtos WHERE nome LIKE :termo OR descricao LIKE :termo";
+        $sql = "SELECT nome, preco FROM produtos WHERE nome LIKE :termo OR descricao LIKE :termo ORDER BY nome";
+
+
+
+
+    try{
+        $consulta = $this->conexao->prepare($sql);
+
+        //juntando o termo com o operador coringa % para like
+        $termoComOperador = "%".$this->termo."%"; 
+
+        $consulta->bindParam(':termo', $termoComOperador, PDO::PARAM_STR);
+        
+        $consulta->execute();
+        $resultado = $consulta->fetchAll(PDO::FETCH_ASSOC);
+    }catch (Exception $erro) {
+        die( "Erro: " .$erro->getMessage());
+    }
     }
 
 
